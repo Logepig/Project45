@@ -1,7 +1,7 @@
 #include<iostream>
 #include<ctime>
 #include<string>
-#define DEFAULT 27
+#include "Windows.h"
 
 using namespace std;
 void init(int a) {
@@ -15,34 +15,36 @@ void init(int a) {
 
 int main() {
 	srand(time(NULL));
+	int *num1 = new int;
+	int *num2 = new int;
+	int *num3 = new int;
+	int *sum = new int;
+	int cont;
 	do {
-		int* num1 = new int[DEFAULT];
-		int* num2 = new int[DEFAULT];
-		int* num3 = new int[DEFAULT];
-		int* sum = new int[DEFAULT];
-		init(num1);
-		init(num2);
-		init(num3);
-		cout << to_string(num1) + "+" + to_string(num2) + "+" + to_string(num3) + "=" << endl;
-		cin >> sum;
-		cout << "It is correct" << endl;
 		system("cls");
-	} while (num1 + num2 + num3 == sum);
-	srand(time(NULL));
+		delete num1, num2, num3, sum;
+		int *num1 = new int;
+		int *num2 = new int;
+		int *num3 = new int;
+		int *sum = new int;
+		init(*num1);
+		init(*num2);
+		init(*num3);
+		cout << to_string(*num1) + "+" + to_string(*num2) + "+" + to_string(*num3) + "=" << endl;
+		cout << "Your answer?: " << endl;
+		cin >> *sum;
+		if (*num1 + *num2 + *num3 == *sum) {
+			cout << "Its correct" << endl;
+		}
+		else {
+			cout << "Its incorrect" << endl;
+		}
+		Sleep(2000);
+		cout << "Should you continue the program? If yes, you may type 1" << endl;
+		cin >> cont;
+	} while(cont == 1);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	cout << "Thanks for using the programm" << endl;
 	return 0;
 }
